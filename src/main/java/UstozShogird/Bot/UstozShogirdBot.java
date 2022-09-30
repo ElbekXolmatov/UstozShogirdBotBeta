@@ -2,7 +2,7 @@ package UstozShogird.Bot;
 
 import UstozShogird.container.ComponentContainer;
 import UstozShogird.controller.AdminController;
-import UstozShogird.controller.MainController;
+import UstozShogird.controller.UserController;
 import UstozShogird.db.Database;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
@@ -37,7 +37,7 @@ public class UstozShogirdBot extends TelegramLongPollingBot {
             if (chatId.equals(ComponentContainer.ADMIN_CHAT_ID)) {
                 AdminController.handleMessage(user, message);
             } else {
-                MainController.handleMessage(user, message);
+                UserController.handleMessage(user, message);
             }
 
         } else if (update.hasCallbackQuery()) {
@@ -51,7 +51,7 @@ public class UstozShogirdBot extends TelegramLongPollingBot {
             if (chatId.equals(ComponentContainer.ADMIN_CHAT_ID)) {
                 AdminController.handleCallback(user, message, data);
             } else {
-                MainController.handleCallback(user, message, data);
+                UserController.handleCallback(user, message, data);
             }
         }
     }

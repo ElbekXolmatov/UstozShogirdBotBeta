@@ -13,11 +13,10 @@ import UstozShogird.util.KeyboardButtonUtil;
 import lombok.AllArgsConstructor;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.methods.updatingmessages.DeleteMessage;
-import org.telegram.telegrambots.meta.api.objects.Message;
-import org.telegram.telegrambots.meta.api.objects.User;
+import org.telegram.telegrambots.meta.api.objects.*;
 
 
-public class AdminController {
+public class UserController {
     public static void handleMessage(User user, Message message) {
 
         if (message.hasText()) {
@@ -164,7 +163,7 @@ public class AdminController {
 
         for (Customer customer : Database.customerList) {
             for (Announce announce : Database.announceList) {
-                new AdminThread(announce, customer).start();
+                new UserThread(announce, customer).start();
             }
         }
 
@@ -204,7 +203,7 @@ public class AdminController {
 }
 
 @AllArgsConstructor
-class AdminThread extends Thread{
+class UserThread extends Thread{
     private Announce announce;
     private Customer customer;
 
